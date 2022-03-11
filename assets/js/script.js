@@ -1,6 +1,6 @@
 class Multimedia {
     constructor(url) {
-        let _url = url
+        const _url = url
         this.getUrl = () => {
             return _url
         }
@@ -22,7 +22,7 @@ class Multimedia {
 class Reproductor extends Multimedia {
     constructor(url, id) {
         super(url)
-        let _id = document.querySelector(`#${id}`)
+        const _id = document.querySelector(`#${id}`)
         this.getId = () => {
             return _id
         }
