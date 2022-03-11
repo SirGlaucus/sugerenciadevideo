@@ -1,7 +1,3 @@
-const reproductorMultimedia = (() => {
-    
-})
-
 class Multimedia {
     constructor(url) {
         let _url = url
@@ -48,20 +44,24 @@ class Reproductor extends Multimedia {
     }
 }
 
-const musicaParaReproducir = new Reproductor("https://www.youtube.com/embed/_mRFtRXLiyg", "musica")
-// musicaParaReproducir.url = "https://www.youtube.com/embed/_mRFtRXLiyg"
-// musicaParaReproducir.id = "musica"
-musicaParaReproducir.playMultimedia()
-musicaParaReproducir.setInicio(40)
+// Por sugerencia del Profesor Claudio se cumple con el requerimiento 3.2 aplicando la funcionalidad IIFE de esta manera
+; const reproductorMultimedia = (() => {
+    const musicaParaReproducir = new Reproductor("https://www.youtube.com/embed/_mRFtRXLiyg", "musica")
+    const peliculasParaReproducir = new Reproductor("https://www.youtube.com/embed/YoHD9XEInc0", "peliculas")
+    const seriesParaReproducir = new Reproductor("https://www.youtube.com/embed/EeCX8Y0a278", "series")
+    // En el pundo 4 se pide instanciar enviando url y id como parametros. Tambien se podria utilizar por ejemplo musicaParaReproducir.url y musicaParaReproducir.id para enviarlos usando los get y set
+    return {
+        comenzarPrograma: () => {
+            musicaParaReproducir.playMultimedia()
+            musicaParaReproducir.setInicio(40)
 
-const peliculasParaReproducir = new Reproductor("https://www.youtube.com/embed/YoHD9XEInc0", "peliculas")
-// peliculasParaReproducir.url = "https://www.youtube.com/embed/YoHD9XEInc0"
-// peliculasParaReproducir.id = "peliculas"
-peliculasParaReproducir.playMultimedia()
-peliculasParaReproducir.setInicio(59)
+            peliculasParaReproducir.playMultimedia()
+            peliculasParaReproducir.setInicio(59)
+            
+            seriesParaReproducir.playMultimedia()
+            seriesParaReproducir.setInicio(110)
+        }
+    }
+})()
 
-const seriesParaReproducir = new Reproductor("https://www.youtube.com/embed/EeCX8Y0a278", "series")
-// seriesParaReproducir.url = "https://www.youtube.com/embed/EeCX8Y0a278"
-// seriesParaReproducir.id = "series"
-seriesParaReproducir.playMultimedia()
-seriesParaReproducir.setInicio(110)
+reproductorMultimedia.comenzarPrograma()
